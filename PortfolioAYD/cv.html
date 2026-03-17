@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Agathe Yacine Diouf</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #ffffff;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #235de2; 
+        }
+
+        .photo-container {
+            margin-right: 55px;
+            flex-shrink: 0;
+        }
+
+        .profile-photo {
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 0;
+            border: 2px solid #6971e7;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-info {
+            flex-grow: 1;
+        }
+
+        .name {
+            font-size: 32px;
+            color: #000000;
+            margin-bottom: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 20px;
+            color: #000000;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        .contact-info {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 0;
+            margin-bottom: 10px;
+            border: 1px solid #4d5bee;
+        }
+
+        .contact-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            color: #000000;
+        }
+
+        .contact-item i {
+            width: 20px;
+            color: #235de2; 
+            margin-right: 10px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #235de2; 
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #235de2; 
+            font-weight: bold;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .grid > div:first-child {
+            background-color: #688ada; 
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .list {
+            list-style-type: none;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+            color: #000000;
+        }
+
+        .list-item:before {
+            content: "•";
+            color: #8facf0; 
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .skill {
+            background-color: #ffffff;
+            color: #0e0e0e; 
+            padding: 5px 12px;
+            border-radius: 0;
+            font-size: 14px;
+            border: 1px solid #235de2; 
+        }
+
+        .experience-item {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 2px solid #3f4ed6; 
+        }
+
+        .experience-item h3 {
+            color: #000000;
+        }
+
+        .experience-item p {
+            color: #000000;
+        }
+
+        .education-item {
+            margin-bottom: 15px;
+        }
+
+        .education-title {
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .education-period {
+            color: #1a1617; 
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .photo-container {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .profile-photo {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .cv-container {
+                padding: 20px;
+            }
+
+            .grid > div:first-child {
+                background-color: transparent;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .name {
+                font-size: 28px;
+            }
+            
+            .title {
+                font-size: 18px;
+            }
+            
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="header">
+            <div class="photo-container">
+                <img src="image photo.jpeg" alt="Photo de Agathe Yacine Diouf" class="profile-photo">
+            </div>
+            
+            <div class="header-info">
+                <h1 class="name">Agathe Yacine DIOUF</h1>
+                <p class="title">Étudiante en Licence 2 Géomatique</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>ayacine.diouf@univ-thies.sn</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Sateme, Niakhar, Fatick</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>78-742-84-29</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <div>
+                <div class="section">
+                    <h2 class="section-title">Expériences professionelles</h2>
+                    <ul class="list">
+                        <li class="list-item">Lycée de Niakhar</li>
+                        <li class="list-item">Bac S2</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Formation</h2>
+                    <div class="education-item">
+                        <div class="education-title">UIDT - UFR SI</div>
+                        <div class="education-period">2025/2026</div>
+                        <p>Licence 2 Géomatique<br>
+                        Unité de Formation et de la Recherche - Sciences de l'ingénieur</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Compétences</h2>
+                    <div class="skills">
+                        <span class="skill">ArcGIS</span>
+                        <span class="skill">Pix4D</span>
+                        <span class="skill">QGIS</span>
+                        <span class="skill">Autocad</span>
+                        <span class="skill">VScode</span>
+                        <span class="skill">python</span>
+                        <span class="skill">pycham</span>
+                        <span class="skill">Rstudio</span>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Autres compétences</h2>
+                    <ul class="list">
+                        <li class="list-item">Travail en équipe</li>
+                        <li class="list-item">Autonomie et rigueur</li>
+                        <li class="list-item">Intérêt pour l'innovation géospatiale</li>
+                        <li class="list-item">Maîtrise des outils open source</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="section">
+                    <h2 class="section-title">Passions</h2>
+                    <p>Passionnée par l'innovation et la création de contenus, je m'efforce à être ponctuelle et engageante.</p>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Techniques</h2>
+                    <div class="experience-item">
+                        <h3>Télédétection</h3>
+                        <p>Acquisition et traitement d'images satellitaires</p>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Cartographie</h3>
+                        <p>Création de cartes thématiques et topographiques</p>
+                    </div>
+                    <div class="experience-item">
+                        <h3>SIG</h3>
+                        <p>Systèmes d'Information Géographique</p>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Photogrammétrie</h3>
+                        <p>Modélisation 3D à partir de photographies</p>
+                    </div>
+                    <div class="experience-item">
+                        <h3>HTML ET CSS</h3>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Projets</h2>
+                    <ul class="list">
+                        <li class="list-item">Tracfic routier sur Thies</li>
+                        <li class="list-item">Qualité de l'air, bruit et microclimat à Thies(2025)</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Langues</h2>
+                    <ul class="list">
+                        <li class="list-item">Français</li>
+                        <li class="list-item">Anglais courant</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
