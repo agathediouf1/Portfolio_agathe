@@ -847,25 +847,24 @@ function createQRCodeModal() {
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 }
 
-// Dans app.js - Version avec hébergement en ligne
-
 function generateQRCode() {
   const qrContainer = document.getElementById('qrcode');
   if (!qrContainer) return;
   
   qrContainer.innerHTML = '';
   
-  // URL de votre site une fois déployé
-  // Exemple avec Netlify : https://votre-portfolio.netlify.app/portfolio.pdf
-  // Exemple avec GitHub Pages : https://votreusername.github.io/portfolio/portfolio.pdf
+  // URL du site déployé sur GitHub Pages
+  const siteUrl = 'https://agathediouf1.github.io/Portfolio_agathe/PortfolioAYD/';
   
-  const pdfUrl = 'https://votre-site.com/Portfolio_Complet_Agathe_DIOUF_19-03-2026 12-58.pdf';
-  
-  // QR code qui ouvre directement le PDF
+  // QR code qui pointe vers le site (ou vers une section spécifique)
+  // L'utilisateur pourra télécharger le PDF depuis le site
   new QRCode(qrContainer, {
-    text: pdfUrl,
+    text: siteUrl,
     width: 256,
-    height: 256
+    height: 256,
+    colorDark: "#3b82f6",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
   });
 }
 
