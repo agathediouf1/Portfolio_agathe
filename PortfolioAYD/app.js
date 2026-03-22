@@ -29,7 +29,7 @@ let projects = [
     id: 3,
     title: "Portfolio web personnel",
     category: "web",
-    description: "Portfolio statique présentant les compétences, projets et coordonnées d'un étudiant en informatique.",
+    description: "Portfolio statique présentant les compétences, projets et des informations personnelles.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     link: "cv.html",
     image: "image_cv.PNG"
