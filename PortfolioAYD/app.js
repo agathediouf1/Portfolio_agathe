@@ -20,7 +20,7 @@ let projects = [
     id: 2,
     title: "Projet Analyse 3",
     category: "Projet",
-    description: "Projet developper sur Qualite de l'air .",
+    description: "Projet sur Qualite de l'air, bruit et microclimat à thiés(2025).",
     technologies: ["Rstudio"],
     link: "projet analyse 3.pdf",
     image: "LOGO R.jpg.jpeg"
