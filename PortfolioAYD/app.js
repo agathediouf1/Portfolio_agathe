@@ -1,25 +1,27 @@
 // ============================
-// Données initiales en mémoire
+// DONNÉES INITIALES EN MÉMOIRE
 // ============================
 
+/**
+ * Collection des projets du portfolio
+ * @type {Array<Object>}
+ */
 let projects = [
   {
-    id: 1,
-    title: "Carte interactive de Niakhar",
-    category: "cartographie",
-    description:
-      "Application web affichant une carte interactive des quartiers de Thiès avec informations contextuelles.",
-    technologies: ["HTML", "CSS", "JavaScript", "Leaflet"],
-    link: "CARTE.html",
-    image: "localition.jpg.jpeg"
+    id: 1,                                      // Identifiant unique
+    title: "Carte interactive de Niakhar",      // Titre du projet
+    category: "cartographie",                    // Catégorie pour filtrage
+    description: "Application web affichant une carte interactive des Villages et infrastructures de la commune de Niakhar.",
+    technologies: ["HTML", "CSS", "JavaScript", "Leaflet"], // Technologies utilisées
+    link: "CARTE.html",                          // Lien vers le projet
+    image: "localition.jpg.jpeg"                  // Image d'aperçu
   },
   {
     id: 2,
-    title: "Dashboard de données climatiques",
+    title: "Projet Analyse 3",
     category: "Projet",
-    description:
-      "Tableau de bord pour visualiser des séries temporelles de données climatiques (température, pluviométrie).",
-    technologies: ["HTML", "CSS", "JavaScript", "Chart.js"],
+    description: "Projet developper sur Qualite de l'air .",
+    technologies: ["Rstudio"],
     link: "projet analyse 3.pdf",
     image: "LOGO R.jpg.jpeg"
   },
@@ -27,52 +29,56 @@ let projects = [
     id: 3,
     title: "Portfolio web personnel",
     category: "web",
-    description:
-      "Portfolio statique présentant les compétences, projets et coordonnées d'un étudiant en informatique.",
+    description: "Portfolio statique présentant les compétences, projets et coordonnées d'un étudiant en informatique.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     link: "cv.html",
     image: "image_cv.PNG"
   },
   {
     id: 4,
-    title: "Portfolio web personnel",
+    title: "site web",
     category: "site web",
-    description:
-      "Portfolio statique présentant les compétences, projets et coordonnées d'un étudiant en informatique.",
+    description: "site web sur Agriculture, Élevage & Pêche au Sénégal.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     link: "site.html",
     image: "agricole.jpg.jpeg"
   },
   {
     id: 4,
-    title: "Portfolio web personnel",
+    title: "Projet",
     category: "Rapport",
-    description:
-      "Portfolio statique présentant les compétences, projets et coordonnées d'un étudiant en informatique.",
+    description: "PROJET DU TRAFIC ROUTIER DANS LA VILLE DE THIES.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     link: "PROJET_Ndoncky 2025 (1).pdf",
     image: "rond_point.PNG"
   },
    {
     id: 4,
-    title: "Portfolio web personnel",
+    title: "Cartes realisees en classe",
     category: "Cartothéque",
-    description:
-      "Portfolio statique présentant les compétences, projets et coordonnées d'un étudiant en informatique.",
-    technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+    description: "Decouvrer nos collections de cartes.",
+    technologies: ["QGIS"],
     link: "cartotheque.html",
     image: "CARTE DE NIAKHAR.png"
   }
 ];
 
+/**
+ * Collection des compétences avec niveaux de maîtrise
+ * @type {Array<Object>}
+ */
 let skills = [
-  { id: 1, name: "HTML5", level: "Avancé", percent: 85, category: "Web" },
+  { id: 1, name: "HTML", level: "Intermédiaire", percent: 85, category: "Web" },
   { id: 2, name: "CSS3 / Design responsive", level: "Intermédiaire", percent: 75, category: "Web" },
   { id: 3, name: "JavaScript (DOM, ES6+)", level: "Intermédiaire", percent: 70, category: "Web" },
   { id: 4, name: "Cartographie SIG", level: "Avancé", percent: 80, category: "Géomatique" },
   { id: 5, name: "Analyse de données", level: "Intermédiaire", percent: 65, category: "Données" }
 ];
 
+/**
+ * Collection des expériences professionnelles/académiques
+ * @type {Array<Object>}
+ */
 let experiences = [
   {
     id: 1,
@@ -80,13 +86,12 @@ let experiences = [
     organisation: "Université Iba Der Thiam de Thiès",
     date: "2025 - 2026",
     location: "Thiès, Sénégal",
-    description:
-      "Réalisation d'une carte thématique interactive pour analyser la répartition spatiale de données géographiques."
+    description: "Réalisation d'une carte thématique pour analyser la répartition spatiale de données géographiques."
   }
 ];
 
 // ============================
-// Configuration réseaux sociaux
+// CONFIGURATION RÉSEAUX SOCIAUX
 // ============================
 const socialLinks = {
   linkedin: "https://www.linkedin.com/in/agathe-diouf-361a593b6/",
@@ -95,8 +100,15 @@ const socialLinks = {
 };
 
 // ============================
-// Fonction Toast
+// FONCTIONS UTILITAIRES
 // ============================
+
+/**
+ * Affiche une notification temporaire (toast)
+ * @param {string} message - Message à afficher
+ * @param {number} duration - Durée d'affichage en ms (défaut: 3000)
+ * @param {string} type - Type de notification (success, warning, error)
+ */
 function showToast(message, duration = 3000, type = 'success') {
   const toast = document.getElementById('toast-notification');
   if (!toast) return;
@@ -106,26 +118,27 @@ function showToast(message, duration = 3000, type = 'success') {
   if (type === 'warning') toast.classList.add('warning');
   if (type === 'error') toast.classList.add('error');
   
+  // Disparition automatique après duration ms
   setTimeout(() => {
     toast.classList.remove('show');
   }, duration);
 }
 
-// ============================
-// Fonction Message de remerciement animé
-// ============================
+/**
+ * Affiche un message de remerciement animé après envoi du formulaire
+ */
 function showThankYouMessage() {
   const thankYouMsg = document.getElementById('thank-you-message');
   if (!thankYouMsg) return;
   
   thankYouMsg.classList.add('show');
   
-  // Fermer automatiquement après 5 secondes
+  // Fermeture automatique après 5 secondes
   setTimeout(() => {
     thankYouMsg.classList.remove('show');
   }, 5000);
   
-  // Fermer au clic
+  // Fermeture au clic sur la modale
   thankYouMsg.addEventListener('click', function(e) {
     if (e.target === thankYouMsg) {
       thankYouMsg.classList.remove('show');
@@ -133,9 +146,10 @@ function showThankYouMessage() {
   });
 }
 
-// ============================
-// Ouvrir réseaux sociaux
-// ============================
+/**
+ * Ouvre le lien du réseau social sélectionné
+ * @param {string} platform - Plateforme sociale (linkedin, github, twitter)
+ */
 window.openSocial = function(platform) {
   if (socialLinks[platform]) {
     window.open(socialLinks[platform], '_blank');
@@ -145,14 +159,16 @@ window.openSocial = function(platform) {
   }
 };
 
-// ============================
-// Contrôle de l'animation du background
-// ============================
+/**
+ * Initialise le contrôle de l'animation du background défilant
+ * Pause l'animation quand la page n'est pas visible
+ * Ralentit l'animation pendant le scroll
+ */
 function initBackgroundControl() {
   const track = document.querySelector('.sliding-track');
   if (!track) return;
   
-  // Pause l'animation quand la page n'est pas visible
+  // Pause l'animation quand la page n'est pas visible (économie de ressources)
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       track.style.animationPlayState = 'paused';
@@ -161,11 +177,12 @@ function initBackgroundControl() {
     }
   });
   
-  // Ralentir l'animation au scroll
+  // Ralentir l'animation au scroll pour améliorer les performances
   let scrollTimeout;
   window.addEventListener('scroll', () => {
-    track.style.animationDuration = '60s';
+    track.style.animationDuration = '60s'; // Ralentissement
     
+    // Retour à la vitesse normale après 1s sans scroll
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
       track.style.animationDuration = '40s';
@@ -173,32 +190,39 @@ function initBackgroundControl() {
   }, { passive: true });
 }
 
-// ============================
-// Utilitaires
-// ============================
-
+/**
+ * Génère le prochain ID disponible pour une collection
+ * @param {Array} collection - Tableau d'objets avec propriété id
+ * @returns {number} Prochain ID disponible
+ */
 function getNextId(collection) {
   return collection.length ? Math.max(...collection.map((item) => item.id)) + 1 : 1;
 }
 
 // ============================
-// Rendu des PROJETS
+// RENDU DES PROJETS
 // ============================
 
 const projectsGrid = document.getElementById("projects-grid");
 const filterButtons = document.querySelectorAll(".filter-btn");
 
+/**
+ * Affiche les projets dans la grille selon le filtre sélectionné
+ * @param {string} filter - Catégorie de filtre ("all" ou catégorie spécifique)
+ */
 function renderProjects(filter = "all") {
   if (!projectsGrid) return;
 
-  const filtered =
-    filter === "all" ? projects : projects.filter((p) => p.category === filter);
+  // Filtrage des projets selon la catégorie
+  const filtered = filter === "all" ? projects : projects.filter((p) => p.category === filter);
 
+  // Gestion du cas où aucun projet ne correspond
   if (!filtered.length) {
     projectsGrid.innerHTML = `<div class="col-12"><p class="text-center text-muted">Aucun projet pour cette catégorie.</p></div>`;
     return;
   }
 
+  // Génération du HTML pour chaque projet
   projectsGrid.innerHTML = filtered
     .map(
       (p) => `
@@ -226,12 +250,12 @@ function renderProjects(filter = "all") {
     .join("");
 }
 
-// Gestion des filtres projets
+// Gestion des filtres projets (événements au clic)
 if (filterButtons.length) {
   filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      filterButtons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
+      filterButtons.forEach((b) => b.classList.remove("active")); // Désactive tous les filtres
+      btn.classList.add("active"); // Active le filtre cliqué
       const cat = btn.dataset.category;
       renderProjects(cat);
     });
@@ -239,29 +263,31 @@ if (filterButtons.length) {
 }
 
 // ============================
-// Rendu des COMPÉTENCES
+// RENDU DES COMPÉTENCES
 // ============================
 
 const skillsGrid = document.getElementById("skills-grid");
-const skillFilterBar = document.getElementById("skill-filter-bar");
 const skillFilterBtns = document.querySelectorAll("#skill-filter-bar .filter-btn");
 
+/**
+ * Affiche les compétences dans la grille selon le filtre sélectionné
+ * @param {string} category - Catégorie de filtre ("all" ou catégorie spécifique)
+ */
 function renderSkills(category = "all") {
   if (!skillsGrid) return;
 
-  const filtered = category === "all" 
-    ? skills 
-    : skills.filter((s) => s.category === category);
+  // Filtrage des compétences selon la catégorie
+  const filtered = category === "all" ? skills : skills.filter((s) => s.category === category);
 
   if (!filtered.length) {
     skillsGrid.innerHTML = `<div class="col-12"><p class="text-center text-muted">Aucune compétence pour cette catégorie.</p></div>`;
-    updateSkillsStats([]);
     return;
   }
 
+  // Génération du HTML pour chaque compétence
   skillsGrid.innerHTML = filtered
     .map((s) => {
-      // Déterminer la classe Bootstrap pour le niveau
+      // Détermination de la classe CSS selon le niveau
       let levelClass = '';
       if (s.level === 'Débutant') levelClass = 'bg-success bg-opacity-25 text-success';
       else if (s.level === 'Intermédiaire') levelClass = 'bg-warning bg-opacity-25 text-warning';
@@ -287,34 +313,6 @@ function renderSkills(category = "all") {
         </article>
       </div>
     `}).join("");
-  
-  // Mettre à jour les statistiques
-  updateSkillsStats(filtered);
-}
-
-// Statistiques des compétences
-function updateSkillsStats(filteredSkills = skills) {
-  const statsContainer = document.getElementById('skills-stats');
-  if (!statsContainer) return;
-  
-  // Compter par catégorie
-  const categories = {};
-  filteredSkills.forEach(s => {
-    const cat = s.category || 'Autres';
-    categories[cat] = (categories[cat] || 0) + 1;
-  });
-  
-  if (Object.keys(categories).length === 0) {
-    statsContainer.innerHTML = '';
-    return;
-  }
-  
-  statsContainer.innerHTML = Object.entries(categories).map(([cat, count]) => `
-    <div class="skills-stat-item">
-      <div class="skills-stat-number">${count}</div>
-      <div class="skills-stat-label">${cat}</div>
-    </div>
-  `).join('');
 }
 
 // Gestion des filtres compétences
@@ -330,11 +328,14 @@ if (skillFilterBtns.length) {
 }
 
 // ============================
-// Rendu des EXPÉRIENCES
+// RENDU DES EXPÉRIENCES
 // ============================
 
 const experienceList = document.getElementById("experience-list");
 
+/**
+ * Affiche la liste des expériences professionnelles/académiques
+ */
 function renderExperiences() {
   if (!experienceList) return;
 
@@ -343,6 +344,7 @@ function renderExperiences() {
     return;
   }
 
+  // Génération du HTML pour chaque expérience
   experienceList.innerHTML = experiences
     .map(
       (e) => `
@@ -366,25 +368,30 @@ function renderExperiences() {
 }
 
 // ============================
-// Thème clair/sombre
+// THÈME CLAIR/SOMBRE
 // ============================
 
+/**
+ * Initialise le toggle de changement de thème (clair/sombre)
+ * Sauvegarde la préférence dans localStorage
+ */
 function initThemeToggle() {
   const themeToggle = document.getElementById('theme-toggle');
   const htmlElement = document.documentElement;
   
   if (!themeToggle) return;
   
-  // Vérifier le thème sauvegardé
+  // Récupération du thème sauvegardé ou utilisation du thème sombre par défaut
   const savedTheme = localStorage.getItem('theme') || 'dark';
   htmlElement.setAttribute('data-theme', savedTheme);
   
+  // Gestion du clic sur le toggle
   themeToggle.addEventListener('click', () => {
     const currentTheme = htmlElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
     htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem('theme', newTheme); // Sauvegarde du choix
     
     // Animation de transition
     document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
@@ -397,39 +404,42 @@ function initThemeToggle() {
 }
 
 // ============================
-// Modales & formulaires
+// MODALES & FORMULAIRES
 // ============================
 
-let projectModal, skillModal, expModal;
+let projectModal, skillModal, expModal; // Variables pour les instances des modales Bootstrap
 
+/**
+ * Initialisation au chargement du DOM
+ */
 document.addEventListener("DOMContentLoaded", () => {
+  // Mise à jour automatique de l'année dans le footer
   const yearSpan = document.getElementById("footer-year");
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  // Initialisation affichage
+  // Initialisation des affichages
   renderProjects();
   renderSkills();
   renderExperiences();
 
-  // Initialisation du thème
+  // Initialisation des fonctionnalités
   initThemeToggle();
-
-  // Initialisation du contrôle du background
   initBackgroundControl();
 
-  // IntersectionObserver pour animations fade-in
+  // IntersectionObserver pour animations fade-in au scroll
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add("visible");
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.2 } // Déclenché quand 20% de l'élément est visible
   );
 
+  // Observation de tous les éléments avec la classe fade-in
   document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
 
-  // Bootstrap modals
+  // Initialisation des modales Bootstrap
   if (typeof bootstrap !== "undefined") {
     const mp = document.getElementById("modalProject");
     const ms = document.getElementById("modalSkill");
@@ -439,7 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (me) expModal = new bootstrap.Modal(me);
   }
 
-  // Boutons ouvrir modales
+  // Attachement des événements aux boutons d'ouverture des modales
   const btnAddProject = document.getElementById("btn-open-add-project");
   const btnAddSkill = document.getElementById("btn-open-add-skill");
   const btnAddExp = document.getElementById("btn-open-add-exp");
@@ -448,42 +458,45 @@ document.addEventListener("DOMContentLoaded", () => {
   btnAddSkill?.addEventListener("click", () => openAddSkill());
   btnAddExp?.addEventListener("click", () => openAddExp());
 
-  // Boutons Enregistrer
-  document
-    .getElementById("btn-save-project")
-    ?.addEventListener("click", handleSaveProject);
-  document
-    .getElementById("btn-save-skill")
-    ?.addEventListener("click", handleSaveSkill);
-  document
-    .getElementById("btn-save-exp")
-    ?.addEventListener("click", handleSaveExp);
+  // Attachement des événements aux boutons de sauvegarde
+  document.getElementById("btn-save-project")?.addEventListener("click", handleSaveProject);
+  document.getElementById("btn-save-skill")?.addEventListener("click", handleSaveSkill);
+  document.getElementById("btn-save-exp")?.addEventListener("click", handleSaveExp);
 
-  // Formulaire contact
+  // Initialisation du formulaire de contact
   setupContactForm();
   
-  // Afficher un toast de bienvenue après 1 seconde
+  // Message de bienvenue après 1 seconde
   setTimeout(() => {
     showToast('👋 Bienvenue sur mon portfolio !');
   }, 1000);
 });
 
-// ---------- Projets ----------
+// ---------- GESTION DES PROJETS ----------
+
+/**
+ * Ouvre la modale pour ajouter un nouveau projet
+ */
 function openAddProject() {
   const form = document.getElementById("project-form");
-  form.reset();
+  form.reset(); // Réinitialisation du formulaire
   form.classList.remove("was-validated");
-  document.getElementById("project-id").value = "";
+  document.getElementById("project-id").value = ""; // ID vide = création
   document.getElementById("modalProjectTitle").textContent = "Ajouter un projet";
   projectModal && projectModal.show();
 }
 
+/**
+ * Ouvre la modale pour modifier un projet existant
+ * @param {number} id - ID du projet à modifier
+ */
 window.openEditProject = function(id) {
   const project = projects.find((p) => p.id === id);
   if (!project) return;
   const form = document.getElementById("project-form");
   form.classList.remove("was-validated");
 
+  // Remplissage du formulaire avec les données du projet
   document.getElementById("project-id").value = project.id;
   document.getElementById("project-title").value = project.title;
   document.getElementById("project-category").value = project.category;
@@ -496,36 +509,32 @@ window.openEditProject = function(id) {
   projectModal && projectModal.show();
 };
 
+/**
+ * Gère la sauvegarde d'un projet (création ou modification)
+ */
 function handleSaveProject() {
   const form = document.getElementById("project-form");
   if (!form.checkValidity()) {
-    form.classList.add("was-validated");
+    form.classList.add("was-validated"); // Affiche les erreurs de validation
     return;
   }
 
+  // Récupération des valeurs du formulaire
   const idValue = document.getElementById("project-id").value;
   const title = document.getElementById("project-title").value.trim();
   const category = document.getElementById("project-category").value;
   const description = document.getElementById("project-desc").value.trim();
-  const technologies = document
-    .getElementById("project-tech")
-    .value.split(",")
-    .map((t) => t.trim())
-    .filter(Boolean);
+  const technologies = document.getElementById("project-tech").value.split(",").map((t) => t.trim()).filter(Boolean);
   const link = document.getElementById("project-link").value.trim();
   const image = document.getElementById("project-image").value.trim();
 
   if (idValue) {
-    // Modification
+    // MODIFICATION : mise à jour du projet existant
     const id = parseInt(idValue, 10);
-    projects = projects.map((p) =>
-      p.id === id
-        ? { ...p, title, category, description, technologies, link, image }
-        : p
-    );
+    projects = projects.map((p) => p.id === id ? { ...p, title, category, description, technologies, link, image } : p);
     showToast('Projet modifié avec succès !');
   } else {
-    // Ajout
+    // CRÉATION : ajout d'un nouveau projet
     const newProject = {
       id: getNextId(projects),
       title,
@@ -540,12 +549,17 @@ function handleSaveProject() {
   }
 
   projectModal && projectModal.hide();
+  // Re-rendu avec le filtre actuel
   const activeFilterBtn = document.querySelector(".filter-btn.active");
   const currentFilter = activeFilterBtn ? activeFilterBtn.dataset.category : "all";
   renderProjects(currentFilter);
 }
 
-// ---------- Compétences ----------
+// ---------- GESTION DES COMPÉTENCES ----------
+
+/**
+ * Ouvre la modale pour ajouter une nouvelle compétence
+ */
 function openAddSkill() {
   const form = document.getElementById("skill-form");
   form.reset();
@@ -555,12 +569,17 @@ function openAddSkill() {
   skillModal && skillModal.show();
 }
 
+/**
+ * Ouvre la modale pour modifier une compétence existante
+ * @param {number} id - ID de la compétence à modifier
+ */
 window.openEditSkill = function(id) {
   const skill = skills.find((s) => s.id === id);
   if (!skill) return;
   const form = document.getElementById("skill-form");
   form.classList.remove("was-validated");
 
+  // Remplissage du formulaire
   document.getElementById("skill-id").value = skill.id;
   document.getElementById("skill-name").value = skill.name;
   document.getElementById("skill-level").value = skill.level;
@@ -571,6 +590,9 @@ window.openEditSkill = function(id) {
   skillModal && skillModal.show();
 };
 
+/**
+ * Gère la sauvegarde d'une compétence (création ou modification)
+ */
 function handleSaveSkill() {
   const form = document.getElementById("skill-form");
   if (!form.checkValidity()) {
@@ -578,6 +600,7 @@ function handleSaveSkill() {
     return;
   }
 
+  // Récupération des valeurs
   const idValue = document.getElementById("skill-id").value;
   const name = document.getElementById("skill-name").value.trim();
   const level = document.getElementById("skill-level").value;
@@ -585,32 +608,30 @@ function handleSaveSkill() {
   const category = document.getElementById("skill-category").value.trim();
 
   if (idValue) {
+    // Modification
     const id = parseInt(idValue, 10);
-    skills = skills.map((s) =>
-      s.id === id ? { ...s, name, level, percent, category } : s
-    );
+    skills = skills.map((s) => s.id === id ? { ...s, name, level, percent, category } : s);
     showToast('Compétence modifiée avec succès !');
   } else {
-    const newSkill = {
-      id: getNextId(skills),
-      name,
-      level,
-      percent,
-      category
-    };
+    // Création
+    const newSkill = { id: getNextId(skills), name, level, percent, category };
     skills.push(newSkill);
     showToast('Compétence ajoutée avec succès !');
   }
 
   skillModal && skillModal.hide();
   
-  // Déterminer le filtre actif
+  // Re-rendu avec le filtre actuel
   const activeSkillFilter = document.querySelector("#skill-filter-bar .filter-btn.active");
   const currentFilter = activeSkillFilter ? activeSkillFilter.dataset.category : "all";
   renderSkills(currentFilter);
 }
 
-// ---------- Expériences ----------
+// ---------- GESTION DES EXPÉRIENCES ----------
+
+/**
+ * Ouvre la modale pour ajouter une nouvelle expérience
+ */
 function openAddExp() {
   const form = document.getElementById("exp-form");
   form.reset();
@@ -620,12 +641,17 @@ function openAddExp() {
   expModal && expModal.show();
 }
 
+/**
+ * Ouvre la modale pour modifier une expérience existante
+ * @param {number} id - ID de l'expérience à modifier
+ */
 window.openEditExp = function(id) {
   const exp = experiences.find((e) => e.id === id);
   if (!exp) return;
   const form = document.getElementById("exp-form");
   form.classList.remove("was-validated");
 
+  // Remplissage du formulaire
   document.getElementById("exp-id").value = exp.id;
   document.getElementById("exp-title").value = exp.title;
   document.getElementById("exp-org").value = exp.organisation;
@@ -637,6 +663,9 @@ window.openEditExp = function(id) {
   expModal && expModal.show();
 };
 
+/**
+ * Gère la sauvegarde d'une expérience (création ou modification)
+ */
 function handleSaveExp() {
   const form = document.getElementById("exp-form");
   if (!form.checkValidity()) {
@@ -644,6 +673,7 @@ function handleSaveExp() {
     return;
   }
 
+  // Récupération des valeurs
   const idValue = document.getElementById("exp-id").value;
   const title = document.getElementById("exp-title").value.trim();
   const organisation = document.getElementById("exp-org").value.trim();
@@ -652,22 +682,13 @@ function handleSaveExp() {
   const description = document.getElementById("exp-desc").value.trim();
 
   if (idValue) {
+    // Modification
     const id = parseInt(idValue, 10);
-    experiences = experiences.map((e) =>
-      e.id === id
-        ? { ...e, title, organisation, date, location, description }
-        : e
-    );
+    experiences = experiences.map((e) => e.id === id ? { ...e, title, organisation, date, location, description } : e);
     showToast('Expérience modifiée avec succès !');
   } else {
-    const newExp = {
-      id: getNextId(experiences),
-      title,
-      organisation,
-      date,
-      location,
-      description
-    };
+    // Création
+    const newExp = { id: getNextId(experiences), title, organisation, date, location, description };
     experiences.push(newExp);
     showToast('Expérience ajoutée avec succès !');
   }
@@ -677,9 +698,12 @@ function handleSaveExp() {
 }
 
 // ============================
-// Formulaire de contact avec message de remerciement
+// FORMULAIRE DE CONTACT
 // ============================
 
+/**
+ * Configure le formulaire de contact avec validation et simulation d'envoi
+ */
 function setupContactForm() {
   const form = document.getElementById("contact-form");
   const submitBtn = document.getElementById("contact-submit-btn");
@@ -687,9 +711,10 @@ function setupContactForm() {
   if (!form) return;
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Empêche le rechargement de la page
     let valid = true;
 
+    // Récupération des éléments du formulaire
     const nameInput = document.getElementById("contact-name");
     const emailInput = document.getElementById("contact-email");
     const messageInput = document.getElementById("contact-message");
@@ -698,12 +723,12 @@ function setupContactForm() {
     const emailError = document.getElementById("contact-email-error");
     const messageError = document.getElementById("contact-message-error");
 
-    // Réinitialiser les classes d'erreur
+    // Réinitialisation des classes d'erreur
     [nameInput, emailInput, messageInput].forEach(input => {
       input.classList.remove("is-invalid");
     });
 
-    // Validation nom
+    // Validation du nom
     if (!nameInput.value.trim()) {
       nameInput.classList.add("is-invalid");
       if (nameError) nameError.textContent = "Veuillez saisir votre nom.";
@@ -714,7 +739,7 @@ function setupContactForm() {
       valid = false;
     }
 
-    // Validation email
+    // Validation de l'email (regex standard)
     const email = emailInput.value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email)) {
@@ -723,7 +748,7 @@ function setupContactForm() {
       valid = false;
     }
 
-    // Validation message
+    // Validation du message
     if (!messageInput.value.trim()) {
       messageInput.classList.add("is-invalid");
       if (messageError) messageError.textContent = "Veuillez saisir votre message.";
@@ -736,25 +761,156 @@ function setupContactForm() {
 
     if (!valid) return;
 
-    // Simulation d'envoi avec animation
+    // Simulation d'envoi avec animation de chargement
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Envoi...';
     submitBtn.disabled = true;
 
+    // Simulation d'un délai d'envoi
     setTimeout(() => {
-      // Simulation d'envoi réussi
-      form.reset();
+      form.reset(); // Réinitialisation du formulaire
       
-      // Restaurer le bouton
+      // Restauration du bouton
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
       
-      // Afficher le message de remerciement animé
+      // Affichage des messages de succès
       showThankYouMessage();
-      
-      // Afficher un toast
       showToast('✅ Message envoyé avec succès !');
     }, 1500);
   });
 }
 
+
+
+// ============================
+// GESTION DU QR CODE
+// ============================
+
+let qrCodeInstance = null;
+
+/**
+ * Affiche la modale avec le QR code
+ */
+window.showQRCode = function() {
+  const modal = document.getElementById('qrCodeModal');
+  if (!modal) {
+    // Créer la modale si elle n'existe pas
+    createQRCodeModal();
+    setTimeout(() => showQRCode(), 100);
+    return;
+  }
+  
+  // Initialiser Bootstrap modal
+  const qrModal = new bootstrap.Modal(modal);
+  
+  // Générer le QR code
+  setTimeout(() => {
+    generateQRCode();
+  }, 300);
+  
+  qrModal.show();
+}
+
+/**
+ * Crée la modale QR code si elle n'existe pas
+ */
+function createQRCodeModal() {
+  const modalHTML = `
+    <div class="modal fade" id="qrCodeModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-glass">
+          <div class="modal-header">
+            <h5 class="modal-title">📱 Scanner pour voir le portfolio PDF</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body text-center">
+            <div id="qrcode" style="margin: 20px auto; width: 256px; height: 256px;"></div>
+            <p class="mt-3">Scannez ce QR code avec votre téléphone pour voir le portfolio complet au format PDF.</p>
+            <div class="mt-4">
+              <button class="btn btn-primary me-2" onclick="downloadPDF()">
+                <i class="bi bi-download"></i> Télécharger le PDF
+              </button>
+              <button class="btn btn-outline-light" onclick="shareQRCode()">
+                <i class="bi bi-share"></i> Partager
+              </button>
+            </div>
+            <div class="mt-3 text-muted">
+              <small>Le PDF sera ouvert directement sur votre téléphone</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+// Dans app.js - Version avec hébergement en ligne
+
+function generateQRCode() {
+  const qrContainer = document.getElementById('qrcode');
+  if (!qrContainer) return;
+  
+  qrContainer.innerHTML = '';
+  
+  // URL de votre site une fois déployé
+  // Exemple avec Netlify : https://votre-portfolio.netlify.app/portfolio.pdf
+  // Exemple avec GitHub Pages : https://votreusername.github.io/portfolio/portfolio.pdf
+  
+  const pdfUrl = 'https://votre-site.com/Portfolio_Complet_Agathe_DIOUF_19-03-2026 12-58.pdf';
+  
+  // QR code qui ouvre directement le PDF
+  new QRCode(qrContainer, {
+    text: pdfUrl,
+    width: 256,
+    height: 256
+  });
+}
+
+/**
+ * Télécharge le PDF directement
+ */
+window.downloadPDF = function() {
+  // Fermer la modale
+  const modal = bootstrap.Modal.getInstance(document.getElementById('qrCodeModal'));
+  if (modal) modal.hide();
+  
+  // URL du fichier PDF
+  const pdfUrl = window.location.origin + '/Portfolio_Complet_Agathe_DIOUF_19-03-2026_12-58.pdf';
+  
+  // Créer un lien temporaire pour le téléchargement
+  const link = document.createElement('a');
+  link.href = pdfUrl;
+  link.download = 'Portfolio_Complet_Agathe_DIOUF_19-03-2026.pdf'; // Nom du fichier téléchargé
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  showToast('Téléchargement du PDF démarré...', 2000, 'success');
+}
+
+/**
+ * Partage le QR code
+ */
+window.shareQRCode = function() {
+  const pdfUrl = window.location.origin + '/Portfolio_Complet_Agathe_DIOUF_19-03-2026_12-58.pdf';
+  
+  if (navigator.share) {
+    navigator.share({
+      title: 'Mon Portfolio',
+      text: 'Découvrez mon portfolio en PDF',
+      url: pdfUrl
+    }).catch(() => {
+      showToast('Partage annulé', 2000, 'warning');
+    });
+  } else {
+    // Fallback : copier le lien
+    navigator.clipboard.writeText(pdfUrl).then(() => {
+      showToast('Lien du PDF copié dans le presse-papier !', 2000, 'success');
+    }).catch(() => {
+      showToast('Impossible de copier le lien', 2000, 'error');
+    });
+  }
+}
