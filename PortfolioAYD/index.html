@@ -1,89 +1,113 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Mon Portfolio | Accueil</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8"> <!-- Encodage des caractères en UTF-8 -->
+  <title>Mon Portfolio | Accueil</title> <!-- Titre affiché dans l'onglet du navigateur -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Viewport pour le responsive design -->
 
-  <!-- Google Font -->
+  <!-- Google Font : Police Poppins - typographie moderne et lisible -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap CSS : Framework CSS pour la mise en page responsive et les composants -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Icônes -->
+  <!-- Icônes Bootstrap : Bibliothèque d'icônes vectorielles pour les réseaux sociaux, etc. -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-  <!-- Style -->
+  <!-- Style personnalisé : Surcharge et personnalisation du thème -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Background défilant avec les 4 images (CORRIGÉ - sans débordement) -->
+  <!-- ============================ -->
+  <!-- BACKGROUND DÉFILANT AVEC 4 IMAGES -->
+  <!-- ============================ -->
   <div class="sliding-background">
+    <!-- Piste d'images en mouvement horizontal -->
     <div class="sliding-track">
+      <!-- Images du carrousel de fond (photos thématiques) -->
       <div class="slide" style="background-image: url('station.jpg');"></div>
       <div class="slide" style="background-image: url('satellites.jpg');"></div>
       <div class="slide" style="background-image: url('recouvrement.jpg');"></div>
       <div class="slide" style="background-image: url('image_drone.jpg');"></div>
-      <!-- Duplication pour effet infini -->
+      <!-- Duplication pour effet infini (transition fluide) -->
       <div class="slide" style="background-image: url('station.jpg');"></div>
       <div class="slide" style="background-image: url('satellites.jpg');"></div>
       <div class="slide" style="background-image: url('recouvrement.jpg');"></div>
       <div class="slide" style="background-image: url('image_drone.jpg');"></div>
     </div>
+    <!-- Overlay sombre pour améliorer la lisibilité du contenu par-dessus les images -->
     <div class="background-overlay"></div>
   </div>
 
-  <!-- Barre de navigation fixe -->
+  <!-- ============================ -->
+  <!-- BARRE DE NAVIGATION FIXE -->
+  <!-- ============================ -->
   <header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm main-navbar">
     <div class="container">
+      <!-- Logo / Marque du site -->
       <a class="navbar-brand fw-bold" href="#hero">✨ Mon Portfolio</a>
+      <!-- Bouton hamburger pour le menu sur mobile -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!-- Menu de navigation principal -->
       <nav class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item"><a class="nav-link active" href="#hero">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#parcours">Parcours</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
           <li class="nav-item"><a class="nav-link" href="#experience">Expériences</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <!-- Bouton de changement de thème -->
+          <!-- BOUTON DE CHANGEMENT DE THÈME (clair/sombre) -->
           <li class="nav-item">
             <div class="theme-toggle" id="theme-toggle">
-              <i class="bi bi-sun-fill"></i>
-              <i class="bi bi-moon-fill"></i>
-              <div class="theme-toggle-slider"></div>
+              <i class="bi bi-sun-fill"></i> <!-- Icône soleil (thème clair) -->
+              <i class="bi bi-moon-fill"></i> <!-- Icône lune (thème sombre) -->
+              <div class="theme-toggle-slider"></div> <!-- Curseur animé -->
             </div>
           </li>
         </ul>
       </nav>
     </div>
+<!-- Dans la section hero, après les boutons existants -->
+<div class="hero-actions mt-3">
+  <button class="btn btn-primary me-2" onclick="generatePortfolioPDF()">
+    <i class="bi bi-file-pdf me-2"></i>
+    Télécharger CV (PDF)
+  </button>
+  <button class="btn btn-outline-light" onclick="showQRCode()">
+    <i class="bi bi-qr-code me-2"></i>
+    QR Code
+  </button>
+</div>
   </header>
 
   <main>
-
+    <!-- ============================ -->
     <!-- SECTION HERO / PROFIL -->
+    <!-- ============================ -->
     <section id="hero" class="section-hero fade-in">
       <div class="container">
         <div class="row align-items-center">
+          <!-- Colonne de texte (présentation) -->
           <div class="col-lg-8 col-md-7">
             <div class="hero-text">
-              <p class="hero-tagline">✨ Étudiant en Licence 2 Géomatique</p>
+              <p class="hero-tagline">✨ Étudiante en Licence 2 Géomatique</p>
               <h1 class="hero-title">Agathe Yacine DIOUF</h1>
-              <h2 class="hero-subtitle">Développeur web junior & Géomaticien</h2>
+              <h2 class="hero-subtitle">Future Géomaticienne & Développeuse web</h2>
               <p class="hero-description">
-                Je crée des applications web modernes pour présenter des données géospatiales,
-                valoriser des projets académiques et faciliter la prise de décision.
+                Passionnée par la geomatique et le développement Web
               </p>
 
+              <!-- Boutons d'action -->
               <div class="hero-actions">
                 <a href="#projects" class="btn btn-primary me-2">Voir mes projets</a>
                 <a href="#contact" class="btn btn-outline-light">Me contacter</a>
               </div>
 
-              <!-- RÉSEAUX SOCIAUX -->
+              <!-- RÉSEAUX SOCIAUX - Liens directs avec icônes -->
               <div class="hero-socials mt-4">
                 <a href="https://www.linkedin.com/in/agathe-diouf-361a593b6/" class="btn btn-outline-light btn-sm me-2" onclick="openSocial('linkedin'); return false;">
                   <i class="bi bi-linkedin"></i> LinkedIn
@@ -98,14 +122,16 @@
             </div>
           </div>
           
+          <!-- Colonne de l'avatar (photo de profil) -->
           <div class="col-lg-4 col-md-5 text-center">
             <div class="hero-avatar-wrapper">
               <div class="hero-avatar-border">
+                <!-- Photo de profil avec dimensions fixes -->
                 <img src="agathe.JPEG.jpeg" width="300" height="300" alt="Photo de profil" class="hero-avatar">
               </div>
-              <!-- Badge de statut -->
+              <!-- Badge de statut (disponible) avec point animé -->
               <div class="avatar-status-badge">
-                <span class="status-dot"></span>
+                <span class="status-dot"></span> <!-- Point vert clignotant -->
                 <span>Disponible</span>
               </div>
             </div>
@@ -114,7 +140,173 @@
       </div>
     </section>
 
+    <!-- ============================ -->
+    <!-- SECTION À PROPOS DE MOI -->
+    <!-- ============================ -->
+    <section id="about" class="section-block fade-in">
+      <div class="container">
+        <!-- En-tête de section -->
+        <div class="section-header">
+          <h2 class="section-title">👤 À propos de moi</h2>
+          <p class="section-subtitle">
+            Découvrez qui je suis, mes passions et ma vision.
+          </p>
+        </div>
+
+        <div class="row align-items-center">
+          <!-- Colonne image -->
+          <div class="col-lg-4 text-center mb-4 mb-lg-0">
+            <div class="about-image-wrapper">
+              <div class="about-image-border">
+                <img src="agathe.JPEG.jpeg" alt="Agathe Yacine DIOUF" class="about-image">
+              </div>
+            </div>
+          </div>
+          <!-- Colonne contenu texte -->
+          <div class="col-lg-8">
+            <div class="about-content">
+              <h3 class="about-name">Agathe Yacine DIOUF</h3>
+              <p class="about-badge">
+                <span class="badge bg-primary me-2">Étudiante en Géomatique</span>
+                <span class="badge bg-secondary">Développeuse Web</span>
+              </p>
+              
+              <p class="about-text">
+                Passionnée par la géomatique et le développement web, je suis actuellement en Licence 2 Géomatique 
+                à l'Université Iba Der Thiam de Thiès. Mon parcours combine des compétences techniques en 
+                cartographie, analyse de données spatiales et création d'applications web.
+              </p>
+              
+              <p class="about-text">
+                Ce qui me motive ? La possibilité de créer des outils innovants qui facilitent la compréhension 
+                et la visualisation des données géospatiales. J'aime transformer des concepts complexes en 
+                solutions accessibles et visuellement attrayantes.
+              </p>
+              
+              <p class="about-text">
+                En dehors de mes études, je suis passionnée par les nouvelles technologies, la photographie 
+                et la découverte de nouvelles cultures. Je crois fermement que la technologie peut être un 
+                puissant levier pour résoudre des problèmes concrets et améliorer notre quotidien.
+              </p>
+              
+              <!-- Statistiques rapides -->
+              <div class="about-stats mt-4">
+                <div class="row">
+                  <div class="col-4">
+                    <div class="about-stat-item">
+                      <div class="about-stat-number">6+</div>
+                      <div class="about-stat-label">Projets réalisés</div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="about-stat-item">
+                      <div class="about-stat-number"></div> <!-- À compléter -->
+                      <div class="about-stat-label">Technologies maîtrisées</div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="about-stat-item">
+                      <div class="about-stat-number">1+</div>
+                      <div class="about-stat-label">Années d'études</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Citation inspirante -->
+              <div class="about-quote mt-4">
+                <i class="bi bi-quote"></i>
+                <p class="mb-0">"La technologie est un pont entre les données et la compréhension humaine."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ -->
+    <!-- SECTION PARCOURS (Timeline) -->
+    <!-- ============================ -->
+    <section id="parcours" class="section-block fade-in">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">🎓 Mon parcours</h2>
+          <p class="section-subtitle">
+            Formation académique et diplômes obtenus.
+          </p>
+        </div>
+
+        <!-- Timeline des formations -->
+        <div class="timeline">
+          <!-- Élément 1 : Licence 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div> <!-- Point sur la ligne -->
+            <div class="timeline-date">2025 - 2026</div> <!-- Date -->
+            <div class="timeline-content"> <!-- Contenu -->
+              <h3>Licence 2 en Géomatique(en cours)</h3>
+              <p class="timeline-location">
+                <i class="bi bi-building"></i> Université Iba Der Thiam de Thiès
+              </p>
+              <p>
+                Formation en systèmes d'information géographique (SIG), 
+                cartographie numérique, télédétection et analyse spatiale.
+              </p>
+              <div class="timeline-tags"> <!-- Tags de compétences -->
+                <span class="badge">SIG</span>
+                <span class="badge">Télédétection</span>
+                <span class="badge">Cartographie</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Élément 2 : Licence 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2024 - 2025</div>
+            <div class="timeline-content">
+              <h3>Licence 1 en Géomatique</h3>
+              <p class="timeline-location">
+                <i class="bi bi-building"></i> Université Iba Der Thiam de Thiès
+              </p>
+              <p>
+                Première année de licence avec des bases solides en informatique, 
+                programmation...
+              </p>
+              <div class="timeline-tags">
+                <span class="badge">informatique</span>
+                <span class="badge">programmation</span>
+                
+              </div>
+            </div>
+          </div>
+
+          <!-- Élément 3 : Baccalauréat -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2024</div>
+            <div class="timeline-content">
+              <h3>Baccalauréat série S2</h3>
+              <p class="timeline-location">
+                <i class="bi bi-building"></i> Lycée de Niakhar
+              </p>
+              <p>
+                Obtention du Baccalauréat scientifique, spécialisation 
+                en mathématiques et sciences physiques.
+              </p>
+              <div class="timeline-tags">
+                <span class="badge">Mathématiques</span>
+                <span class="badge">Physique</span>
+                <span class="badge">Sciences</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ -->
     <!-- SECTION PROJETS -->
+    <!-- ============================ -->
     <section id="projects" class="section-block fade-in">
       <div class="container">
         <div class="section-header d-flex flex-wrap justify-content-between align-items-center">
@@ -124,12 +316,13 @@
               Galerie de projets réalisés avec descriptions, technologies utilisées et liens.
             </p>
           </div>
+          <!-- Bouton pour ajouter un projet (ouvre la modale) -->
           <button class="btn btn-outline-primary" id="btn-open-add-project">
             <i class="bi bi-plus-circle"></i> Ajouter un projet
           </button>
         </div>
 
-        <!-- Filtres de catégorie -->
+        <!-- Filtres de catégorie pour les projets -->
         <div class="filter-bar">
           <button class="filter-btn active" data-category="all">Tous</button>
           <button class="filter-btn" data-category="web">Web</button>
@@ -137,12 +330,14 @@
           <button class="filter-btn" data-category="data">Données</button>
         </div>
 
-        <!-- Grille des projets -->
+        <!-- Grille des projets (remplie dynamiquement par JavaScript) -->
         <div id="projects-grid" class="row g-4"></div>
       </div>
     </section>
 
+    <!-- ============================ -->
     <!-- SECTION COMPÉTENCES -->
+    <!-- ============================ -->
     <section id="skills" class="section-block fade-in">
       <div class="container">
         <div class="section-header d-flex flex-wrap justify-content-between align-items-center">
@@ -152,6 +347,7 @@
               Compétences techniques classées par niveau : débutant, intermédiaire, avancé.
             </p>
           </div>
+          <!-- Bouton pour ajouter une compétence -->
           <button class="btn btn-outline-primary" id="btn-open-add-skill">
             <i class="bi bi-plus-circle"></i> Ajouter une compétence
           </button>
@@ -163,20 +359,19 @@
           <button class="filter-btn" data-category="Web">Info Personnel</button>
           <button class="filter-btn" data-category="Géomatique">Géomatique</button>
           <button class="filter-btn" data-category="Données">Données</button>
-          <button class="filter-btn" data-category="Données">Web</button>
-           <button class="filter-btn" data-category="Données">Rapport</button>
-            <button class="filter-btn" data-category="Données">Cartothéque</button>
+          <button class="filter-btn" data-category="Web">Web</button>
+          <button class="filter-btn" data-category="Rapport">Rapport</button>
+          <button class="filter-btn" data-category="Cartothéque">Cartothéque</button>
         </div>
 
-        <!-- Statistiques des compétences -->
-        <div id="skills-stats" class="skills-stats"></div>
-
-        <!-- Grille des compétences -->
+        <!-- Grille des compétences (remplie dynamiquement) -->
         <div id="skills-grid" class="row g-4"></div>
       </div>
     </section>
 
+    <!-- ============================ -->
     <!-- SECTION EXPÉRIENCES -->
+    <!-- ============================ -->
     <section id="experience" class="section-block fade-in">
       <div class="container">
         <div class="section-header d-flex flex-wrap justify-content-between align-items-center">
@@ -186,16 +381,20 @@
               Stages, projets tutorés, travaux académiques et expériences pertinentes.
             </p>
           </div>
+          <!-- Bouton pour ajouter une expérience -->
           <button class="btn btn-outline-primary" id="btn-open-add-exp">
             <i class="bi bi-plus-circle"></i> Ajouter une expérience
           </button>
         </div>
 
+        <!-- Liste des expériences (remplie dynamiquement) -->
         <div id="experience-list" class="experience-list"></div>
       </div>
     </section>
 
+    <!-- ============================ -->
     <!-- SECTION CONTACT -->
+    <!-- ============================ -->
     <section id="contact" class="section-block fade-in section-contact">
       <div class="container">
         <div class="section-header">
@@ -207,28 +406,33 @@
 
         <div class="row justify-content-center">
           <div class="col-lg-7">
+            <!-- Formulaire de contact -->
             <form id="contact-form" novalidate>
+              <!-- Champ Nom -->
               <div class="mb-3">
                 <label for="contact-name" class="form-label">Nom complet *</label>
                 <input type="text" class="form-control" id="contact-name" required>
                 <div class="invalid-feedback" id="contact-name-error">Veuillez saisir votre nom (minimum 2 caractères).</div>
               </div>
+              <!-- Champ Email -->
               <div class="mb-3">
                 <label for="contact-email" class="form-label">Adresse email *</label>
                 <input type="email" class="form-control" id="contact-email" required>
                 <div class="invalid-feedback" id="contact-email-error">Veuillez saisir un email valide.</div>
               </div>
+              <!-- Champ Message -->
               <div class="mb-3">
                 <label for="contact-message" class="form-label">Message *</label>
                 <textarea id="contact-message" rows="4" class="form-control" required></textarea>
                 <div class="invalid-feedback" id="contact-message-error">Veuillez saisir votre message (minimum 10 caractères).</div>
               </div>
+              <!-- Bouton d'envoi -->
               <button type="submit" class="btn btn-primary w-100" id="contact-submit-btn">
                 Envoyer le message
               </button>
             </form>
 
-            <!-- MESSAGE DE REMERCIEMENT ANIMÉ -->
+            <!-- MESSAGE DE REMERCIEMENT ANIMÉ (caché par défaut) -->
             <div id="thank-you-message" class="thank-you-message">
               <div class="thank-you-content">
                 <div class="thank-you-icon">
@@ -236,6 +440,7 @@
                 </div>
                 <h3 class="thank-you-title">Merci !</h3>
                 <p class="thank-you-text">Votre message a bien été envoyé. Je vous répondrai dans les plus brefs délais.</p>
+                <!-- Cœurs animés -->
                 <div class="thank-you-hearts">
                   <i class="bi bi-heart-fill heart-1"></i>
                   <i class="bi bi-heart-fill heart-2"></i>
@@ -248,29 +453,72 @@
       </div>
     </section>
 
+    <!-- MODALE QR CODE -->
+<div class="modal fade" id="qrCodeModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-glass">
+      <div class="modal-header">
+        <h5 class="modal-title">📱 Scanner pour télécharger le portfolio</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <!-- Conteneur pour le QR code -->
+        <div id="qrcode" style="margin: 20px auto; width: 256px; height: 256px;"></div>
+        
+        <p class="mt-3">Scannez ce QR code avec votre téléphone pour télécharger le portfolio au format PDF.</p>
+        
+        <!-- Options de téléchargement direct -->
+        <div class="mt-4">
+          <button class="btn btn-primary me-2" onclick="generateAndDownloadPDF()">
+            <i class="bi bi-download"></i> Télécharger maintenant
+          </button>
+          <button class="btn btn-outline-light" onclick="shareQRCode()">
+            <i class="bi bi-share"></i> Partager
+          </button>
+        </div>
+        
+        <div class="mt-3 text-muted">
+          <small>Le PDF sera généré avec vos dernières modifications</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ajouter la bibliothèque QRCode -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<!-- Pour le QR code -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<!-- Pour le PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   </main>
 
-  <!-- PIED DE PAGE -->
+  <!-- ============================ -->
+  <!-- PIED DE PAGE (FOOTER) -->
+  <!-- ============================ -->
   <footer class="main-footer">
     <div class="container d-flex flex-wrap justify-content-between align-items-center">
-      <small>&copy; <span id="footer-year"></span> Mon Portfolio – Tous droits réservés.</small>
+      <small>&copy; <span id="footer-year"></span> Mon Portfolio – Tous droits réservés.</small> <!-- Année dynamique -->
       <small class="text-muted">Projet Technologie Web 1 – Licence 2 Géomatique.</small>
     </div>
   </footer>
 
+  <!-- ============================ -->
   <!-- MODALES D'AJOUT / MODIFICATION -->
+  <!-- ============================ -->
 
-  <!-- Modal Projet -->
+  <!-- MODALE PROJET -->
   <div class="modal fade" id="modalProject" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content modal-glass">
+      <div class="modal-content modal-glass"> <!-- Style vitré personnalisé -->
         <div class="modal-header">
           <h5 class="modal-title" id="modalProjectTitle">Ajouter / modifier un projet</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> <!-- Bouton fermeture -->
         </div>
         <div class="modal-body">
+          <!-- Formulaire projet -->
           <form id="project-form" novalidate>
-            <input type="hidden" id="project-id">
+            <input type="hidden" id="project-id"> <!-- Champ caché pour l'ID -->
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label" for="project-title">Titre *</label>
@@ -309,14 +557,14 @@
           </form>
         </div>
         <div class="modal-footer justify-content-between">
-          <button class="btn btn-outline-light" data-bs-dismiss="modal">Annuler</button>
-          <button class="btn btn-primary" id="btn-save-project">Enregistrer</button>
+          <button class="btn btn-outline-light" data-bs-dismiss="modal">Annuler</button> <!-- Annulation -->
+          <button class="btn btn-primary" id="btn-save-project">Enregistrer</button> <!-- Sauvegarde -->
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal Compétence -->
+  <!-- MODALE COMPÉTENCE -->
   <div class="modal fade" id="modalSkill" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content modal-glass">
@@ -361,7 +609,7 @@
     </div>
   </div>
 
-  <!-- Modal Expérience -->
+  <!-- MODALE EXPÉRIENCE -->
   <div class="modal fade" id="modalExp" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content modal-glass">
@@ -408,11 +656,21 @@
     </div>
   </div>
 
-  <!-- Toast notification -->
+  <!-- TOAST NOTIFICATION (messages temporaires) -->
   <div id="toast-notification" class="toast-notification"></div>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="app.js"></script>
+ <!-- Dans l'ordre, juste avant la fermeture du body -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="app.js"></script>
+<script src="generate-pdf.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
