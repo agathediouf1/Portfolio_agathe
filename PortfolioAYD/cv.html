@@ -12,6 +12,40 @@
             box-sizing: border-box;
         }
 
+        /* STYLES DU BOUTON RETOUR */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #235de2, #3f4ed6);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(35, 93, 226, 0.3);
+            z-index: 1000;
+            text-decoration: none;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(35, 93, 226, 0.4);
+            background: linear-gradient(135deg, #1e4fc9, #3540b5);
+        }
+
+        .back-button i {
+            font-size: 18px;
+        }
+
+        /* STYLES PRINCIPAUX DU CV */
         body {
             font-family: 'Helvetica', 'Arial', sans-serif;
             line-height: 1.6;
@@ -28,6 +62,7 @@
             padding: 40px;
             border-radius: 0;
             border: 1px solid #e0e0e0;
+            margin-top: 20px;
         }
 
         .header {
@@ -35,7 +70,7 @@
             align-items: flex-start;
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #235de2; 
+            border-bottom: 2px solid #235de2;
         }
 
         .photo-container {
@@ -88,7 +123,7 @@
 
         .contact-item i {
             width: 20px;
-            color: #235de2; 
+            color: #235de2;
             margin-right: 10px;
         }
 
@@ -98,10 +133,10 @@
 
         .section-title {
             font-size: 22px;
-            color: #235de2; 
+            color: #235de2;
             margin-bottom: 15px;
             padding-bottom: 5px;
-            border-bottom: 2px solid #235de2; 
+            border-bottom: 2px solid #235de2;
             font-weight: bold;
         }
 
@@ -112,7 +147,7 @@
         }
 
         .grid > div:first-child {
-            background-color: #688ada; 
+            background-color: #688ada;
             padding: 20px;
             border-radius: 4px;
         }
@@ -130,7 +165,7 @@
 
         .list-item:before {
             content: "•";
-            color: #8facf0; 
+            color: #8facf0;
             position: absolute;
             left: 0;
             font-size: 18px;
@@ -145,21 +180,22 @@
 
         .skill {
             background-color: #ffffff;
-            color: #0e0e0e; 
+            color: #0e0e0e;
             padding: 5px 12px;
             border-radius: 0;
             font-size: 14px;
-            border: 1px solid #235de2; 
+            border: 1px solid #235de2;
         }
 
         .experience-item {
             margin-bottom: 15px;
             padding-left: 15px;
-            border-left: 2px solid #3f4ed6; 
+            border-left: 2px solid #3f4ed6;
         }
 
         .experience-item h3 {
             color: #000000;
+            margin-bottom: 5px;
         }
 
         .experience-item p {
@@ -176,12 +212,29 @@
         }
 
         .education-period {
-            color: #1a1617; 
+            color: #1a1617;
             font-size: 14px;
             font-weight: bold;
         }
 
+        /* STYLES RESPONSIVES */
         @media (max-width: 768px) {
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            .back-button i {
+                font-size: 14px;
+            }
+            
+            .cv-container {
+                margin-top: 60px;
+                padding: 20px;
+            }
+            
             .header {
                 flex-direction: column;
                 align-items: center;
@@ -201,10 +254,6 @@
             .grid {
                 grid-template-columns: 1fr;
                 gap: 10px;
-            }
-            
-            .cv-container {
-                padding: 20px;
             }
 
             .grid > div:first-child {
@@ -226,10 +275,26 @@
                 width: 150px;
                 height: 150px;
             }
+            
+            .cv-container {
+                margin-top: 70px;
+                padding: 15px;
+            }
+            
+            .back-button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- BOUTON RETOUR VERS LE PORTFOLIO -->
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Retour au Portfolio
+    </a>
+
     <div class="cv-container">
         <div class="header">
             <div class="photo-container">
@@ -260,12 +325,13 @@
         <div class="grid">
             <div>
                 <div class="section">
-                    <h2 class="section-title">Expériences professionelles</h2>
+                    <h2 class="section-title">Expériences professionnelles</h2>
                     <ul class="list">
                         <li class="list-item">Lycée de Niakhar</li>
                         <li class="list-item">Bac S2</li>
                     </ul>
                 </div>
+                
                 <div class="section">
                     <h2 class="section-title">Formation</h2>
                     <div class="education-item">
@@ -275,6 +341,7 @@
                         Unité de Formation et de la Recherche - Sciences de l'ingénieur</p>
                     </div>
                 </div>
+                
                 <div class="section">
                     <h2 class="section-title">Compétences</h2>
                     <div class="skills">
@@ -283,11 +350,12 @@
                         <span class="skill">QGIS</span>
                         <span class="skill">Autocad</span>
                         <span class="skill">VScode</span>
-                        <span class="skill">python</span>
-                        <span class="skill">pycham</span>
+                        <span class="skill">Python</span>
+                        <span class="skill">PyCharm</span>
                         <span class="skill">Rstudio</span>
                     </div>
                 </div>
+                
                 <div class="section">
                     <h2 class="section-title">Autres compétences</h2>
                     <ul class="list">
@@ -298,11 +366,13 @@
                     </ul>
                 </div>
             </div>
+            
             <div>
                 <div class="section">
                     <h2 class="section-title">Passions</h2>
                     <p>Passionnée par l'innovation et la création de contenus, je m'efforce à être ponctuelle et engageante.</p>
                 </div>
+                
                 <div class="section">
                     <h2 class="section-title">Techniques</h2>
                     <div class="experience-item">
@@ -323,20 +393,26 @@
                     </div>
                     <div class="experience-item">
                         <h3>HTML ET CSS</h3>
+                        <p>Développement web front-end</p>
                     </div>
                 </div>
+                
                 <div class="section">
                     <h2 class="section-title">Projets</h2>
                     <ul class="list">
-                        <li class="list-item">Tracfic routier sur Thies</li>
-                        <li class="list-item">Qualité de l'air, bruit et microclimat à Thies(2025)</li>
+                        <li class="list-item">Trafic routier sur Thies</li>
+                        <li class="list-item">Qualité de l'air, bruit et microclimat à Thies (2025)</li>
+                        <li class="list-item">Carte interactive de Niakhar</li>
+                        <li class="list-item">Portfolio web personnel</li>
                     </ul>
                 </div>
+                
                 <div class="section">
                     <h2 class="section-title">Langues</h2>
                     <ul class="list">
-                        <li class="list-item">Français</li>
-                        <li class="list-item">Anglais courant</li>
+                        <li class="list-item">Français (Courant)</li>
+                        <li class="list-item">Anglais (Courant)</li>
+                        <li class="list-item">Wolof (Langue maternelle)</li>
                     </ul>
                 </div>
             </div>
