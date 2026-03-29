@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cartothèque — Niakhar 2004–2012</title>
+<title>Cartothèque — Niakhar</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -614,6 +614,9 @@
     .lb-header { padding: 14px 16px; }
     .lb-footer { padding: 10px 16px; }
   }
+  /* Bouton retour */
+.back-btn{background:rgba(212,168,69,.15);border:1px solid var(--gold);border-radius:30px;padding:6px 15px;font-size:.75rem;font-weight:600;color:var(--gold);cursor:pointer;transition:all .2s;font-family:'Source Sans 3',sans-serif;display:flex;align-items:center;gap:6px;}
+.back-btn:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
 </style>
 </head>
 <body>
@@ -623,8 +626,11 @@
     <div>
       <div class="header-badge">Cartothèque SIG</div>
       <h1>Population de <span>Niakhar</span></h1>
-      <p class="header-meta">Taux de croissance démographique inter-recensements (2004–2012) selon cinq méthodes de discrétisation cartographique. Zone d'étude de Niakhar, Sénégal. Source : IRD / BD Niakhar 130721.</p>
+      <p class="header-meta">Taux de croissance démographique inter-recensements selon cinq méthodes de discrétisation cartographique. Zone d'étude de Niakhar, Sénégal. Source : IRD / BD Niakhar 130721.</p>
+      
     </div>
+    <!-- Bouton retour vers index.html -->
+<div class="back-btn" onclick="window.location.href='index.html'">← Retour</div>
   </div>
   <div class="stats-row">
     <div class="stat">
@@ -636,7 +642,7 @@
       <span class="stat-label">Villages</span>
     </div>
     <div class="stat">
-      <span class="stat-num">2004–12</span>
+      <span class="stat-num">2023</span>
       <span class="stat-label">Période</span>
     </div>
     <div class="stat">
@@ -697,7 +703,7 @@
         <div class="download-group">
           <button class="dl-btn" onclick="downloadImg(1, 'PNG')">PNG</button>
           <button class="dl-btn" onclick="downloadImg(1, 'JPG')">JPG</button>
-          <button class="dl-btn" onclick="downloadImg(1, 'WEBP')">WebP</button>
+          <button class="dl-btn" onclick="downloadImg(1, 'WEBP')"></button>
         </div>
       </div>
     </div>
@@ -805,7 +811,7 @@
       <span class="lb-dl-label">Télécharger :</span>
       <button class="lb-dl-btn" onclick="downloadCurrent('PNG')">⬇ PNG</button>
       <button class="lb-dl-btn" onclick="downloadCurrent('JPG')">⬇ JPG</button>
-      <button class="lb-dl-btn" onclick="downloadCurrent('WEBP')">⬇ WebP</button>
+      <button class="lb-dl-btn" onclick="downloadCurrent('WEBP')">⬇ </button>
       <button class="lb-dl-btn" onclick="downloadCurrent('PDF')">⬇ PDF</button>
     </div>
   </div>
@@ -813,8 +819,8 @@
 
 <footer>
   <div class="footer-text">
-    © Cartothèque Niakhar 2004–2012 · Source : IRD · BD Niakhar130721<br>
-    Réalisée par : Agathe Diouf
+    © Cartothèque Niakhar · Source : IRD · BD Niakhar130721<br>
+    Réalisée par : Agathe Yacine Diouf
   </div>
   <div class="footer-credit">Cartographie SIG · Sénégal</div>
 </footer>
