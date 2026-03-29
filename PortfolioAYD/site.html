@@ -835,6 +835,9 @@
                 justify-content: center;
             }
         }
+       /* Bouton retour */
+.back-btn{background:rgba(212,168,69,.15);border:1px solid var(--gold);border-radius:30px;padding:6px 15px;font-size:.75rem;font-weight:600;color:var(--gold);cursor:pointer;transition:all .2s;font-family:'Source Sans 3',sans-serif;display:flex;align-items:center;gap:6px;}
+.back-btn:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
     </style>
 </head>
 <body>
@@ -842,6 +845,9 @@
     <header>
         <div class="container">
             <nav>
+                  <!-- BOUTON RETOUR VERS LE PORTFOLIO -->
+<!-- Bouton retour vers index.html -->
+<div class="back-btn" onclick="window.location.href='index.html'">← Retour</div>
                 <div class="logo animate-fade-in-left">
                     <i class="fas fa-seedling animate-pulse"></i>
                     AgroSénégal
