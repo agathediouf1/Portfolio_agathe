@@ -25,6 +25,9 @@ h1 span{color:var(--gold);}
 .stats{display:flex;gap:8px;flex-wrap:wrap;}
 .chip{background:rgba(255,255,255,.07);border:1px solid rgba(212,168,69,.3);border-radius:20px;padding:4px 11px;font-size:.68rem;color:var(--sand);}
 .chip strong{color:var(--gold);}
+/* Bouton retour */
+.back-btn{background:rgba(212,168,69,.15);border:1px solid var(--gold);border-radius:30px;padding:6px 15px;font-size:.75rem;font-weight:600;color:var(--gold);cursor:pointer;transition:all .2s;font-family:'Source Sans 3',sans-serif;display:flex;align-items:center;gap:6px;}
+.back-btn:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
 
 /* MAP */
 #map{position:absolute;top:66px;left:0;right:370px;bottom:0;}
@@ -165,6 +168,8 @@ h1 span{color:var(--gold);}
     <div class="chip">Arr. : <strong>Niakhar</strong></div>
     <div class="chip">Objets : <strong id="cnt">—</strong></div>
   </div>
+  <!-- Bouton retour vers index.html -->
+  <div class="back-btn" onclick="window.location.href='index.html'">← Retour</div>
 </div>
 
 <div id="map"></div>
