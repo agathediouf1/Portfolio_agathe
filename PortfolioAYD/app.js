@@ -18,7 +18,7 @@ let projects = [
     category: "Projet",
     description: "Projet sur Qualite de l'air, bruit et microclimat à thiés(2025).",
     technologies: ["Rstudio"],
-    link: "projet analyse 3.pdf",
+    link: "Portrait_Environnemental.mp4",
     image: "LOGO R.jpg.jpeg"
   },
   {
@@ -45,7 +45,7 @@ let projects = [
     category: "Rapport",
     description: "PROJET DU TRAFIC ROUTIER DANS LA VILLE DE THIES.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-    link: "PROJET_Ndoncky 2025 (1).pdf",
+    link: "Le_trafic_de_Thiès_en_données.mp4",
     image: "rond_point.PNG"
   },
   {
@@ -1057,3 +1057,302 @@ function copyToClipboard(text, type) {
 // Et modifiez les éléments HTML pour ajouter l'attribut onclick :
 // <span onclick="copyToClipboard('agathediouf1@gmail.com', 'Email')">agathediouf1@gmail.com</span>
 // <span onclick="copyToClipboard('787428429', 'Numéro')">78 742 84 29</span>
+
+
+// ============================
+// FONCTIONS POUR VIDÉO AVEC PASSAGE VERS PDF
+// ============================
+
+// Stocker l'état des vidéos et leurs PDF associés
+const videoPdfMap = new Map();
+
+// Fonction pour ouvrir le PDF (à ajouter si pas déjà présente)
+function openPDF(pdfPath, title) {
+  // Vérifier si la modale PDF existe
+  let pdfModal = document.getElementById('pdfModal');
+  
+  if (!pdfModal) {
+    // Créer la modale PDF
+    pdfModal = document.createElement('div');
+    pdfModal.className = 'modal fade pdf-modal';
+    pdfModal.id = 'pdfModal';
+    pdfModal.setAttribute('tabindex', '-1');
+    pdfModal.innerHTML = `
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content modal-glass">
+          <div class="modal-header">
+            <h5 class="modal-title" id="pdfModalTitle">Document PDF</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body p-0">
+            <iframe id="pdfIframe" src="" style="width: 100%; height: 75vh;" frameborder="0"></iframe>
+          </div>
+          <div class="modal-footer">
+            <a id="pdfDownloadLink" href="#" download class="btn btn-primary">
+              <i class="bi bi-download"></i> Télécharger
+            </a>
+            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Fermer</button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(pdfModal);
+  }
+  
+  const modalTitle = document.getElementById('pdfModalTitle');
+  const pdfIframe = document.getElementById('pdfIframe');
+  const pdfDownloadLink = document.getElementById('pdfDownloadLink');
+  
+  if (modalTitle) modalTitle.textContent = title || 'Document PDF';
+  if (pdfIframe) pdfIframe.src = pdfPath;
+  if (pdfDownloadLink) pdfDownloadLink.href = pdfPath;
+  
+  const modal = new bootstrap.Modal(pdfModal);
+  modal.show();
+  
+  // Nettoyer l'iframe quand la modale se ferme
+  pdfModal.addEventListener('hidden.bs.modal', function() {
+    if (pdfIframe) pdfIframe.src = '';
+  }, { once: true });
+}
+
+// Afficher la modale de transition vers le PDF (après la vidéo)
+function showPdfTransitionModal(pdfPath, pdfTitle, videoModalToClose = null) {
+  // Vérifier si la modale existe déjà
+  let transitionModal = document.getElementById('pdfTransitionModal');
+  
+  if (!transitionModal) {
+    // Créer la modale de transition
+    transitionModal = document.createElement('div');
+    transitionModal.className = 'modal fade';
+    transitionModal.id = 'pdfTransitionModal';
+    transitionModal.setAttribute('tabindex', '-1');
+    transitionModal.innerHTML = `
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-glass" style="text-align: center; padding: 1rem;">
+          <div class="modal-body">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">
+              <i class="bi bi-file-pdf-fill" style="color: #ef4444;"></i>
+              <i class="bi bi-arrow-right-circle-fill" style="color: var(--accent-primary);"></i>
+              <i class="bi bi-play-circle-fill" style="color: #22c55e;"></i>
+            </div>
+            <h4 class="mb-3">📄 Vidéo terminée !</h4>
+            <p class="mb-3">Vous avez visionné le résumé vidéo.<br>Souhaitez-vous consulter le rapport PDF complet ?</p>
+            <div class="d-flex gap-3 justify-content-center">
+              <button class="btn btn-primary" id="goToPdfBtn">
+                <i class="bi bi-file-pdf-fill"></i> Voir le rapport PDF
+              </button>
+              <button class="btn btn-outline-light" data-bs-dismiss="modal">
+                <i class="bi bi-x-circle"></i> Plus tard
+              </button>
+            </div>
+            <div class="mt-3">
+              <label class="d-flex align-items-center justify-content-center gap-2" style="cursor: pointer;">
+                <input type="checkbox" id="dontShowAgain"> 
+                <small>Ne plus afficher cette suggestion pour cette vidéo</small>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(transitionModal);
+  }
+  
+  // Mettre à jour le bouton avec le bon PDF
+  const goToPdfBtn = document.getElementById('goToPdfBtn');
+  if (goToPdfBtn) {
+    const newBtn = goToPdfBtn.cloneNode(true);
+    goToPdfBtn.parentNode.replaceChild(newBtn, goToPdfBtn);
+    newBtn.onclick = () => {
+      openPDF(pdfPath, pdfTitle);
+      bootstrap.Modal.getInstance(transitionModal).hide();
+      if (videoModalToClose) {
+        const videoModal = bootstrap.Modal.getInstance(videoModalToClose);
+        if (videoModal) videoModal.hide();
+      }
+    };
+  }
+  
+  // Gérer la case "Ne plus afficher"
+  const dontShowAgain = document.getElementById('dontShowAgain');
+  if (dontShowAgain) {
+    dontShowAgain.checked = false;
+    dontShowAgain.onchange = function() {
+      if (this.checked) {
+        localStorage.setItem(`hide_pdf_suggestion_${pdfPath}`, 'true');
+      } else {
+        localStorage.removeItem(`hide_pdf_suggestion_${pdfPath}`);
+      }
+    };
+  }
+  
+  // Vérifier si l'utilisateur a déjà choisi de ne plus voir cette suggestion
+  const shouldHide = localStorage.getItem(`hide_pdf_suggestion_${pdfPath}`) === 'true';
+  if (!shouldHide) {
+    const modal = new bootstrap.Modal(transitionModal);
+    modal.show();
+  }
+}
+
+// Fonction pour intercepter les clics sur "Voir" dans les projets
+function setupProjectVideoLinks() {
+  // Attendre que les projets soient chargés
+  setTimeout(() => {
+    // Trouver tous les liens "Voir" dans les projets
+    const viewLinks = document.querySelectorAll('.project-card .btn-outline-light, .project-card a[href*=".mp4"]');
+    
+    viewLinks.forEach(link => {
+      // Ne pas dupliquer les écouteurs
+      if (link.hasAttribute('data-pdf-setup')) return;
+      link.setAttribute('data-pdf-setup', 'true');
+      
+      // Sauvegarder le lien original
+      const originalHref = link.getAttribute('href');
+      
+      // Déterminer quel PDF associer basé sur le titre du projet
+      const projectCard = link.closest('.project-card');
+      const projectTitle = projectCard?.querySelector('.project-title')?.textContent || '';
+      
+      let pdfPath = '';
+      let pdfTitle = '';
+      
+      if (projectTitle.includes('Analyse') || projectTitle.includes('Portrait')) {
+        pdfPath = 'projet analyse 3.pdf';
+        pdfTitle = 'Projet Analyse 3 - Qualité de l\'air';
+      } else if (projectTitle.includes('Trafic') || projectTitle.includes('Routier')) {
+        pdfPath = 'PROJET_Ndoncky 2025 (1).pdf';
+        pdfTitle = 'Projet Trafic Routier - Thiès';
+      }
+      
+      if (pdfPath && originalHref && originalHref.includes('.mp4')) {
+        // Remplacer le lien par une fonction qui ouvre la vidéo avec suivi
+        link.removeAttribute('href');
+        link.style.cursor = 'pointer';
+        
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Créer une modale vidéo si elle n'existe pas
+          let videoModal = document.getElementById('videoModal');
+          if (!videoModal) {
+            videoModal = document.createElement('div');
+            videoModal.className = 'modal fade';
+            videoModal.id = 'videoModal';
+            videoModal.setAttribute('tabindex', '-1');
+            videoModal.innerHTML = `
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-glass">
+                  <div class="modal-header">
+                    <h5 class="modal-title">📹 Résumé vidéo du projet</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body p-0">
+                    <video id="modalVideo" controls style="width: 100%; height: auto;" preload="metadata">
+                      <source src="${originalHref}" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-success" id="skipToPdfBtn">
+                      <i class="bi bi-file-pdf-fill"></i> 📄 Passer au PDF (rapport complet)
+                    </button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">
+                      <i class="bi bi-x-circle"></i> Fermer
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `;
+            document.body.appendChild(videoModal);
+          } else {
+            // Mettre à jour la source de la vidéo
+            const modalVideo = document.getElementById('modalVideo');
+            if (modalVideo) {
+              modalVideo.pause();
+              modalVideo.src = originalHref;
+              modalVideo.load();
+            }
+          }
+          
+          // Mettre à jour le bouton "Passer au PDF"
+          const skipToPdfBtn = document.getElementById('skipToPdfBtn');
+          if (skipToPdfBtn) {
+            const newSkipBtn = skipToPdfBtn.cloneNode(true);
+            skipToPdfBtn.parentNode.replaceChild(newSkipBtn, skipToPdfBtn);
+            newSkipBtn.onclick = () => {
+              // Fermer la modale vidéo
+              const videoModalElement = document.getElementById('videoModal');
+              bootstrap.Modal.getInstance(videoModalElement)?.hide();
+              // Ouvrir directement le PDF
+              openPDF(pdfPath, pdfTitle);
+              showToast('📄 Ouverture du rapport PDF complet...', 2000, 'info');
+            };
+          }
+          
+          // Configurer la transition vidéo -> PDF à la fin
+          const videoModalElement = document.getElementById('videoModal');
+          const modalVideo = document.getElementById('modalVideo');
+          
+          if (modalVideo) {
+            // Nettoyer les anciens écouteurs
+            const newVideo = modalVideo.cloneNode(true);
+            modalVideo.parentNode.replaceChild(newVideo, modalVideo);
+            
+            newVideo.addEventListener('ended', function() {
+              videoModalElement?.addEventListener('hidden.bs.modal', function() {
+                showPdfTransitionModal(pdfPath, pdfTitle, videoModalElement);
+              }, { once: true });
+              bootstrap.Modal.getInstance(videoModalElement)?.hide();
+            });
+            
+            // Remplacer la référence
+            window.currentModalVideo = newVideo;
+          }
+          
+          const videoModalBootstrap = new bootstrap.Modal(videoModalElement);
+          videoModalBootstrap.show();
+        });
+      }
+    });
+  }, 1000);
+}
+
+// Initialiser au chargement de la page
+document.addEventListener('DOMContentLoaded', function() {
+  setupProjectVideoLinks();
+  
+  // Observer les changements dans la grille des projets (pour les ajouts dynamiques)
+  const projectsGrid = document.getElementById('projects-grid');
+  if (projectsGrid) {
+    const observer = new MutationObserver(function() {
+      setupProjectVideoLinks();
+    });
+    observer.observe(projectsGrid, { childList: true, subtree: true });
+  }
+});
+
+// Fonction pour afficher les notifications
+function showToast(message, duration = 3000, type = 'success') {
+  let toast = document.getElementById('toast-notification');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast-notification';
+    toast.className = 'toast-notification';
+    document.body.appendChild(toast);
+  }
+  
+  toast.textContent = message;
+  toast.className = 'toast-notification show';
+  if (type === 'warning') toast.classList.add('warning');
+  if (type === 'error') toast.classList.add('error');
+  if (type === 'info') {
+    toast.style.background = 'linear-gradient(135deg, #3b82f6, #8b5cf6)';
+  }
+  
+  setTimeout(() => {
+    toast.classList.remove('show');
+    if (type === 'info') {
+      toast.style.background = '';
+    }
+  }, duration);
+}
